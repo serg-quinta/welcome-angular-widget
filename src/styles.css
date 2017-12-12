@@ -90,8 +90,8 @@ label {
   pointer-events: none;
   font-size: 22px;
 }
-label .req {
-  margin: 2px;
+label.required::after {
+  content: '\00a0*';
   color: #1ab188;
 }
 

@@ -20,8 +20,8 @@ export class SignUpComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(this.fieldWidth)]],
       lastName: ['', [Validators.required, Validators.minLength(this.fieldWidth)]],
       emailGroup: this._fb.group({
-        email: ['', [Validators.required, Validators.minLength(this.fieldWidth)]],
-        confirmEmail: ['', [Validators.required, Validators.minLength(this.fieldWidth)]]
+        email: ['', [Validators.required, Validators.email]],
+        confirmEmail: ['', [Validators.required, Validators.email]]
       }),
       password: ['', [Validators.required, Validators.minLength(this.fieldWidth)]]
     });

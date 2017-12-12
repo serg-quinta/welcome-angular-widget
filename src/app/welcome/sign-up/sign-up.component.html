@@ -3,7 +3,7 @@
     <form action="#" [formGroup]="formModel" (ngSubmit)="submit(formModel.value)">
       <fieldset class="top-row">
         <div class="field-wrap">
-          <label for="firstName">First Name</label>
+          <label for="firstName" class="required">First Name</label>
           <input type="text" name="firstName" id="firstName" formControlName="firstName"
                  [ngClass]="{onError: formModel.get('firstName').invalid && formModel.get('firstName').touched}">
           <div class="formHelp" 
@@ -11,7 +11,7 @@
                Please add {{fieldWidth - formModel.get('firstName').value.length}} more character(s)</div>
         </div>
         <div class="field-wrap">
-          <label for="lastName">Last Name</label>
+          <label for="lastName" class="required">Last Name</label>
           <input type="text" name="lastName" id="lastName" [formControl]="formModel.get('lastName')"
                  [ngClass]="{onError: formModel.get('lastName').invalid && formModel.get('lastName').touched}">
           <div class="formHelp" 
@@ -23,23 +23,34 @@
       <fieldset formGroupName="emailGroup" appAsyncEqualValidator>
         <div class="top-row">
           <div class="field-wrap">
-            <label for="email">Email Address</label>
+            <label for="email" class="required">Email Address</label>
             <input type="email" name="email" id="email" formControlName="email"
                    [ngClass]="{onError: formModel.get('emailGroup').get('email').invalid && formModel.get('emailGroup').get('email').touched}">
+            <div class="formHelp" 
+                 [hidden]="formModel.get('emailGroup').get('email').valid || 
+                           formModel.get('emailGroup').get('email').untouched">
+                 Your Email Address isn't valid</div>
           </div>
           <div class="field-wrap">
-            <label for="confirm-email">Confirm Email Address</label>
+            <label for="confirm-email" class="required">Confirm Email Address</label>
             <input type="confirm-email" name="confirm-email" id="confirm-email" formControlName="confirmEmail"
-                   [ngClass]="{onError: formModel.get('emailGroup').get('confirmEmail').invalid && formModel.get('emailGroup').get('confirmEmail').touched}">
+                   [ngClass]="{onError: formModel.get('emailGroup').get('confirmEmail').invalid && 
+                                        formModel.get('emailGroup').get('confirmEmail').touched || 
+                                        formModel.get('emailGroup').invalid && 
+                                        formModel.get('emailGroup').get('confirmEmail').touched
+                                      }">
+            <div class="formHelp" 
+                [hidden]="formModel.get('emailGroup').valid ||
+                          formModel.get('emailGroup').pending ||
+                          formModel.get('emailGroup').get('confirmEmail').untouched ||
+                          formModel.get('emailGroup').get('confirmEmail').pristine">
+                Emails aren't equal</div>
           </div>
         </div>
-        <div class="formHelp" 
-             [hidden]="formModel.get('emailGroup').valid || formModel.get('emailGroup').pristine && formModel.get('emailGroup').untouched">
-             Emails aren't equal</div>
       </fieldset>
 
       <div class="field-wrap">
-        <label for="password">Set A Password</label>
+        <label for="password" class="required">Set A Password</label>
         <input type="password" name="password" id="password" formControlName="password"
                [ngClass]="{onError: formModel.get('password').invalid && formModel.get('password').touched}">
         <div class="formHelp" 
