@@ -1,22 +1,21 @@
-<div id="login">
-  <h1>Welcome Back!</h1>
-  
-  <form action="/" method="post" [formGroup]="formModel">
-  
-    <div class="field-wrap">
+<h1>Welcome Back!</h1>
+
+<form action="/" method="post" [formGroup]="formModel">
+
+  <div class="field-wrap">
     <label for="login-email" class="required">Email Address</label>
     <input type="email" name="login-email" id="login-email" formControlName="loginEmail"
-           [ngClass]="{onError: formModel.get('loginEmail').invalid && formModel.get('loginEmail').touched}">
+            [ngClass]="{onError: formModel.get('loginEmail').invalid && formModel.get('loginEmail').touched}">
   </div>
-  
+
   <div class="field-wrap">
     <label for="password-email" class="required">Password</label>
     <input type="password" name="password-email" id="password-email" formControlName="loginPassword"
-           [ngClass]="{onError: formModel.get('loginPassword').invalid && formModel.get('loginPassword').touched}">
+            [ngClass]="{onError: formModel.get('loginPassword').invalid && formModel.get('loginPassword').touched}">
   </div>
-  
-  <button class="button button-block" [disabled]="formModel.invalid">Log In</button>
-  
-  </form>
 
-</div>
+  <div class="field-wrap">
+    <button class="button button-block" [disabled]="formModel.invalid">Log In</button>
+  </div>
+
+</form>

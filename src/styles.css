@@ -45,7 +45,7 @@ a:hover {
   display: table;
   clear: both;
 }
-.tab-group li a {
+.tab__item {
   display: block;
   text-decoration: none;
   padding: 15px;
@@ -56,25 +56,27 @@ a:hover {
   width: 50%;
   text-align: center;
   cursor: pointer;
-  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
-.tab-group li a:hover {
+.tab__item:hover {
   background: #179b77;
-  color: #ffffff;
+  color: #fff;
 }
-.tab-group .active a {
+.tab__item--active {
   background: #1ab188;
-  color: #ffffff;
+  color: #fff;
 }
 
-.tab-content > div:last-child {
-  /* display: none; */
+.tab-content__item {
+  display: none;
+}
+.tab-content__item--active {
+  display: block;
 }
 
 h1 {
   text-align: center;
-  color: #ffffff;
+  color: #fff;
   font-weight: 300;
   margin: 0 0 40px;
 }
@@ -188,4 +190,15 @@ textarea {
 .forgot {
   margin-top: -20px;
   text-align: right;
+}
+
+.onError {
+  background-color: #ef9a9a;
+  border-color: #f44336;
+  color: #13232f;
+}
+
+.formHelp {
+  color: #1ab188;
+  margin: .5em 0;
 }

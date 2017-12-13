@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+
+type Tab = {
+  title: string,
+  url: string
+};
 
 @Component({
   selector: 'app-welcome',
@@ -8,8 +12,34 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class WelcomeComponent {
 
-  // public formArrayModel: FormGroup = new FormGroup({
-  //   emails: new FormArray([new FormControl()])
-  // });
+  public tabs: Tab[] = [
+    {
+      title: 'Sign Up',
+      url: '#signup'
+    },
+    {
+      title: 'Log In',
+      url: '#login'
+    }
+  ];
+
+  public constructor(
+  ) {}
+
+  public onClick(event: any): void {
+    event.preventDefault();
+    if (event.target.tagName !== 'A') {
+      return;
+    }
+    event.currentTarget.querySelectorAll('.tab__item')
+      .forEach((item: HTMLElement) => item.classList.remove('tab__item--active'));
+    event.target.classList.add('tab__item--active');
+
+    event.currentTarget.nextElementSibling.querySelectorAll('.tab-content__item')
+      .forEach((item: HTMLElement) => item.classList.remove('tab-content__item--active'));
+
+    const target: HTMLElement = document.querySelector(event.target.getAttribute('href'));
+    target.classList.add('tab-content__item--active');
+  }
 
 }

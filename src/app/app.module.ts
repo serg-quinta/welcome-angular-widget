@@ -6,8 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SignUpComponent } from './welcome/sign-up/sign-up.component';
-import { AsyncEqualValidatorDirective } from './welcome/directives/async-equal-validator.directive';
 import { LogInComponent } from './welcome/log-in/log-in.component';
+import { AsyncEqualValidatorDirective } from './welcome/directives/async-equal-validator.directive';
+import { HighlightDirective } from './welcome/directives/highlight.directive';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LogInComponent } from './welcome/log-in/log-in.component';
     WelcomeComponent,
     SignUpComponent,
     AsyncEqualValidatorDirective,
-    LogInComponent
+    LogInComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
