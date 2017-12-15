@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,6 +26,13 @@ export class SignUpComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(this.fieldWidth)]]
     });
   }
+
+  public get firstName(): AbstractControl { return this.formModel.get('firstName'); }
+  public get lastName(): AbstractControl { return this.formModel.get('lastName'); }
+  public get emailGroup(): AbstractControl { return this.formModel.get('emailGroup'); }
+  public get email(): AbstractControl { return this.formModel.get('emailGroup').get('email'); }
+  public get confirmEmail(): AbstractControl { return this.formModel.get('emailGroup').get('confirmEmail'); }
+  public get password(): AbstractControl { return this.formModel.get('password'); }
 
   public submit(value: any): void {
     console.log(value);

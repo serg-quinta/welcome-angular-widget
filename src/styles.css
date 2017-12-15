@@ -198,7 +198,11 @@ textarea {
   color: #13232f;
 }
 
-.formHelp {
+.formHelpMessage {
   color: #1ab188;
+  margin: .5em 0;
+}
+.formErrorMessage {
+  color: #f44336;
   margin: .5em 0;
 }

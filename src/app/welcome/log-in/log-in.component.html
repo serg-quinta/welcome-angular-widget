@@ -5,13 +5,29 @@
   <div class="field-wrap">
     <label for="login-email" class="required">Email Address</label>
     <input type="email" name="login-email" id="login-email" formControlName="loginEmail"
-            [ngClass]="{onError: formModel.get('loginEmail').invalid && formModel.get('loginEmail').touched}">
+          [ngClass]="{onError: loginEmail.invalid && (loginEmail.dirty || loginEmail.touched)}">
+    <div class="formErrorMessage" *ngIf="loginEmail.invalid && (loginEmail.dirty || loginEmail.touched)">
+      <div *ngIf="loginEmail.errors.required">
+        Password is required.
+      </div>
+      <div *ngIf="loginEmail.errors.email">
+        Your Email Address isn't valid.
+      </div>
+    </div>
   </div>
 
   <div class="field-wrap">
     <label for="password-email" class="required">Password</label>
     <input type="password" name="password-email" id="password-email" formControlName="loginPassword"
-            [ngClass]="{onError: formModel.get('loginPassword').invalid && formModel.get('loginPassword').touched}">
+            [ngClass]="{onError: loginPassword.invalid && (loginPassword.dirty || loginPassword.touched)}">
+    <div *ngIf="loginPassword.invalid && (loginPassword.dirty || loginPassword.touched)">
+      <div class="formErrorMessage" *ngIf="loginPassword.errors.required">
+        Password is required.
+      </div>
+      <div class="formHelpMessage" *ngIf="loginPassword.errors.minlength">
+        Please add {{fieldWidth - loginPassword.value.length}} more character(s)
+      </div>
+    </div>
   </div>
 
   <div class="field-wrap">
